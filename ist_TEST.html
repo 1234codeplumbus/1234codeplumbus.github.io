@@ -1,0 +1,357 @@
+<html>
+
+  <div id="fakebox" style="color: white;overflow-y: hidden;overflow-x: hidden;position: absolute; transform: translate(50%, 50%); border-style: groove;">
+    <div id="contain">
+      <div id="start"style="display: block;">
+        <button onclick="start();">play</button>
+      </div>
+      <div id="name"style="display: none;">
+        <input id="Fn" type="text">first name</input><br>
+        <input id="Ln" type="text">last name</input><br>
+        <button onclick="next()">submit</button>
+      </div>
+      <div id="choice" style="display: none;">
+        <button onclick="play('a')">computer</button>
+        <button onclick="play('b')">database</button>
+        <button onclick="play('c')">Hard disk drive</button>
+      </div>
+      <div id="game"style="display: none;">
+        <img id="gameGif" src="">
+        <img src="https://thumbs.gfycat.com/AridDigitalGibbon-max-1mb.gif" id="atkMc" style="display: none;">
+        <img src="https://thumbs.gfycat.com/AridDigitalGibbon-max-1mb.gif" id="atkBad" style="display: none;">
+        <div class="stat" style="top: 241px; left: 309px;">
+            <div id="nameMc"> name of mc</div>
+            <div style="width: 284px; height: 5px; background: #0e2c29; border: outset; ">
+              <div id="hpBarMC" style="width: 284;"></div>
+            </div>
+            <div id="hpMc">
+              284/284
+            </div>
+        </div>
+
+        <div class="stat" style="top: 5px; right: 309px;">
+          <div id="nameBad">badguy </div>
+          <div style="width: 284px; height: 5px; background: #0e2c29; border: outset; ">
+            <div id="hpBarBad" style="width: 284;"></div>
+          </div>
+          <div id="hpBad">
+            284/284
+          </div>
+        </div>
+
+
+        <div style="display: flex;flex-direction: column;";>
+          <div id="questions" style="margin: 6px;width: 532px;"> awefre  esrf ser  esrf?</div>
+            <div id="answer">
+
+              <div class="ansBtn">
+                <button onclick="ANSinput('a')";class="qu";>a)</button><div id="a-"></div>
+              </div>
+
+              <div class="ansBtn">
+                <button onclick="ANSinput('b')";class="qu";>b)</button><div id="b-"></div>
+              </div>
+
+              <div class="ansBtn">
+                <button onclick="ANSinput('c')";class="qu";>c)</button><div style="margin-left: 26px;" id="c-"></div>
+              </div>
+
+              <div class="ansBtn">
+                <button onclick="ANSinput('d')";class="qu";>d)</button><div id="d-"></div>
+              </div>
+            </div>
+            <div id="options">
+            </div>
+        </div>
+      </div>
+      <div id="endScreen"style="display: none;">
+        <button>back to menu</button>
+      </div>
+    </div>
+  </div>
+<style>
+#contain{
+  width: 100%;
+  height: 100%;
+}
+#fakebox{
+  width: 700px;height: 660px;
+}
+.qu{
+  width: 25%;
+}
+#gameGif{
+  width: 80%;
+  
+}
+#atkMc{
+  position: absolute;
+  width: 89px;
+  top: 166px;
+  ;
+  left: 207px;
+  transition-delay: 2s;
+  background: radial-gradient(closest-side,#ff0000a8, #ffffff00);
+}
+#atkBad{
+  position: absolute;
+  width: 89px;
+  top: 98px;
+  ;
+  right: 235px;
+  transition-delay: 2s;
+  background: radial-gradient(closest-side,#ff0000a8, #ffffff00);
+}
+
+#game{
+  padding-bottom: 12%;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  background: #00000078;
+  flex-direction: column;
+  height: -webkit-fill-available;
+}
+.ansBtn{
+  background: linear-gradient(45deg, #ff81007a, transparent);
+  outline: solid;
+  margin-bottom: 9px;
+}
+.stat{
+  position: absolute;
+    width: 289px;
+    height: 50px;
+    background: #00000063;
+    padding: 1%;
+}
+#answer{
+  width: 100%;
+}
+
+#hpBarMc{
+    height: 5px;
+    position: absolute;
+    background: #8fdd75;
+}
+#hpBarBad{
+    height: 5px;
+    position: absolute;
+    background: #8fdd75;
+}
+</style>
+
+<script>
+  const dbMC   ="https://cdn.discordapp.com/attachments/844117240520638494/1124638682700316672/bg.gif"
+  const compMC ="https://cdn.discordapp.com/attachments/907224443644960828/1124708027866566687/db.gif"
+  const hdMC   ="https://cdn.discordapp.com/attachments/907224443644960828/1124857100888182865/Hard-disk-drive.gif"
+
+  var mc=""
+  StartScreen=document.getElementById("start");
+  nameScreen=document.getElementById("name");
+  choiceScreen=document.getElementById("choice");
+  gameScreen=document.getElementById("game");
+  endScreen=document.getElementById("endScreen");
+  function start() {
+    StartScreen.style.display="none"
+    nameScreen.style.display="block"
+
+  }
+  function next() {
+    nameScreen.style.display="none";
+    choiceScreen.style.display="block";
+    var fName=document.getElementById("Fn").value;
+    var Lname=document.getElementById("Ln").value;
+    addNameData(fName,Lname,1,2,1,2,1,2,1,2,2,2)
+  }
+  var questionOn=1;
+  var anwensers={
+    1:"b",
+    2:"b",
+    3:"b",
+    4:"b",
+    5:"b",
+    6:"b",
+    7:"b",
+    8:"b",
+    9:"b",
+    10:"b",
+  }
+  var questons={
+    1:"From the following the Electronic databases cannot:",
+    2:"Which of the following lists are in order from smallest to largest?",
+    3:"Which data type in a database stores alphabetic characters?",
+    4:"A field that contains unique data in every record is a:",
+    5:"Layouts in forms and tables of a database are easily amended by:",
+    6:"The most effective way of searching a large database is to:",
+    7:"define data dictionary:",
+    8:"The database feature that is used to rearrange data in alphabetical order is called:",
+    9:"A business has created a database of its customers in Australia. The conditional part of the query to retrieve all customers in Sydney who are over 20 years of age would be:",
+    10:"Which of the following is not a good design principle?  ",
+  }
+  var ansAs={
+    1:"Search and sort data quickly",
+    2:"Field, Character, Record",
+    3:"Word",
+    4:"Primary key",
+    5:"Deleting a field",
+    6:"Use a search or find command",
+    7:"The process of arranging data in a parti- cular order.",
+    8:"Searching",
+    9:"City = ‘Sydney’ AND Age < 20",
+    10:"Use layouts that present the information effectively.",
+  }
+  var ansBs={
+    1:"Perform recalculations on data quickly and accurately",
+    2:"Field, Record, Character",
+    3:"Field",
+    4:"Secondary key",
+    5:"Constructing a query",
+    6:"Print a report",
+    7:"The kind of data in the field. ",
+    8:"Copying",
+    9:"City = ‘Sydney’ AND Age > 20",
+    10:"Balance text on the page either vertically or horizontally.",
+  }
+  var ansCs={
+    1:"Correct and update data",
+    2:"Character, Field, Record",
+    3:"Text",
+    4:"Field key",
+    5:"Designing a report",
+    6:"Browse a table",
+    7:"It is used to view, enter and change data in a table.",
+    8:"Sorting",
+    9:"City = ‘Sydney’ OR Age < 20",
+    10:"Use a many different styles throughout a report.",
+  }
+  var ansDs={
+    1:"Present data in a variety of ways",
+    2:"Character, Field, Record",
+    3:"Record",
+    4:"Compound key",
+    5:"Moving fields, Headings or Instructions",
+    6:"Construct a query",
+    7:"A collection of facts about one specific entry in a database.",
+    8:"Organising",
+    9:"City = ‘Sydney’ OR Age > 20",
+    10:"Ensure Columns have clear and descriptive headings.",
+  }
+ 
+  rightAns=anwensers[questionOn]
+
+  queston=questons[questionOn]
+  document.getElementById("questions").innerHTML=queston
+
+  ansA=ansAs[questionOn]
+  document.getElementById("a-").innerHTML=ansA
+  ansB=ansBs[questionOn]
+  document.getElementById("b-").innerHTML=ansB
+  ansC=ansCs[questionOn]
+  document.getElementById("c-").innerHTML=ansC
+  ansD=ansDs[questionOn]
+  document.getElementById("d-").innerHTML=ansD
+
+  function updateQ(){
+    rightAns=anwensers[questionOn]
+    queston=questons[questionOn]
+    document.getElementById("questions").innerHTML=queston
+
+    ansA=ansAs[questionOn]
+    document.getElementById("a-").innerHTML=ansA
+    ansB=ansBs[questionOn]
+    document.getElementById("b-").innerHTML=ansB
+    ansC=ansCs[questionOn]
+    document.getElementById("c-").innerHTML=ansC
+    ansD=ansDs[questionOn]
+    document.getElementById("d-").innerHTML=ansD
+  }
+
+
+
+  function play(choice){
+    choiceScreen.style.display="none"
+    gameScreen.style.display="flex"
+    mc=choice;
+    if (mc=="a"){
+      document.getElementById("gameGif").src=dbMC
+    }else if(mc=="b"){
+      document.getElementById("gameGif").src=compMC 
+    }else if(mc="c"){
+      document.getElementById("gameGif").src=hdMC
+    }
+  }
+  function ANSinput(ans){
+    if(ans==rightAns){
+      hitEnemy()
+      console.log("good")
+    }else{
+      hitMc()
+      console.log("bad")
+    }
+    nextQuestion()
+  }
+  function nextQuestion(){
+    questionOn+=1;
+    updateQ();
+  }
+
+
+
+  function hitMc(){
+    document.getElementById("atkMc").style.display="block";
+    document.getElementById("hpBarMC").style.width=document.getElementById("hpBarMC").clientWidth-28;
+    document.getElementById("hpMc").innerHTML= document.getElementById("hpBarMC").clientWidth+"/284";
+
+    setTimeout(function(){
+      document.getElementById("atkMc").style.display="none"
+    }, 500);
+  }
+  function hitEnemy(){
+    document.getElementById("atkBad").style.display="block";
+    document.getElementById("hpBarBad").style.width=document.getElementById("hpBarBad").clientWidth-28;
+    document.getElementById("hpBad").innerHTML= document.getElementById("hpBarBad").clientWidth+"/284";
+
+    setTimeout(function(){
+      document.getElementById("atkBad").style.display="none";
+      console.log("hit bad rtgs");
+    }, 500);
+  }
+  function endGame(msg,BG){
+    
+  }
+
+function addNameData(first,last,a,b,c,d,e,f,g,h,i,j){
+    var date = new Date();
+    var DateHandIn=date.getDate()+"/"+date.getUTCMonth()+"/"+date.getFullYear()
+    var TimeHandIn=date.getHours()+":"+date.getMinutes()
+    fetch('https://sheetdb.io/api/v1/iwfjuy2l8ablu', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      data: [{// 2=wrong 1=right
+            "First-name" : first,
+            "Last-name" : last,
+            "chapter-":"databases",
+            "1-" : a,
+            "2-" : b,
+            "3-" : c,
+            "4-" : d,
+            "5-" : e,
+            "6-" : f,
+            "7-" : g,
+            "8-" : h,
+            "9-" : i,
+            "10-" : j,
+            "date-": DateHandIn,
+            "time-":TimeHandIn
+          }]
+    })})
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+  }  
+</script>
+
+</html>
