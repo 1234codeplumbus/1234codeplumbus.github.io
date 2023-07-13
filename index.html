@@ -28,7 +28,7 @@
         <img src="https://thumbs.gfycat.com/AridDigitalGibbon-max-1mb.gif" id="atkBad" style="display: none;">
         <div id="missTxtBAD">miss</div>
         <div id="missTxtMC">miss</div>
-        <div class="stat" style="top: 41%; left: 35%;">
+        <div class="stat" style="top: 41%; left: 25%;">
             <div id="nameMc"> name of mc </div>
             <div style="width: 284px; height: 5px; background: #0e2c29; border: outset; ">
               <div id="hpBarMC" style="width: 284;"></div>
@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="stat" style="top: 21%; right: 35%;">
+        <div class="stat" style="top: 21%; right: 25%;">
           <div id="nameBad"> badguy </div>
           <div style="width: 284px; height: 5px; background: #0e2c29; border: outset; ">
             <div id="hpBarBad" style="width: 284;"></div>
@@ -105,17 +105,16 @@
 #atkMc{
   position: absolute;
   width: 89px;
-  top: 166px;
-  ;
-  left: 207px;
+  top: 35%;
+  left: 37%;
   transition-delay: 2s;
   background: radial-gradient(closest-side,#ff0000a8, #ffffff00);
 }
 #atkBad{
   position: absolute;
   width: 89px;
-  top: 98px;
-  right: 235px;
+  top: 28%;
+  right: 39%;
   transition-delay: 2s;
   background: radial-gradient(closest-side,#ff0000a8, #ffffff00);
 }
@@ -425,7 +424,7 @@ function hitMc(){
   else{
     MChpW=document.getElementById("hpBarMC").clientWidth
     document.getElementById("atkMc").style.display="block";
-    document.getElementById("hpBarMC").style.width=document.getElementById("hpBarMC").clientWidth-28;
+    document.getElementById("hpBarMC").style.width=MChpW-28;
     MChpW=document.getElementById("hpBarMC").clientWidth
     document.getElementById("hpMc").innerHTML= MChpW+"/284";
     if(MChpW<28){
