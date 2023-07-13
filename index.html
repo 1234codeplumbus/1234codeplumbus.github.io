@@ -1,4 +1,3 @@
-theme: minima
 <html>
 
   <div id="fakebox" style="color: white;overflow-y: hidden;overflow-x: hidden;position: absolute; transform: translate(50%, 50%); border-style: groove;">
@@ -13,9 +12,15 @@ theme: minima
         <button onclick="next()">next</button>
       </div>
       <div id="choice" style="display: none; width: 100%; align-content: center; flex-wrap: wrap; justify-content: space-evenly;">
-        <button onclick="play('a')">computer</button>
-        <button onclick="play('b')">database</button>
-        <button onclick="play('c')">Hard disk drive</button>
+        <div style="width: 100%; background-color: white; display: flex; justify-content: space-evenly;">
+          <img class="cImg" onclick="play('a')"src="https://cdn.discordapp.com/attachments/907224443644960828/1128965902285680646/image.png" alt="">
+          <img class="cImg"onclick="play('b')"src="https://cdn.discordapp.com/attachments/907224443644960828/1128965980844982373/image.png" alt="">
+          <img class="cImg"onclick="play('c')"src="https://cdn.discordapp.com/attachments/907224443644960828/1128965937614299136/image.png" alt="">
+        </div>
+        <div  style="background: darkorange;">computer</div>
+        <div  style="background: darkorange;">database</div>
+        <div ; style="background: darkorange;">Hard disk drive</div>
+
       </div>
       <div id="gameWindow"style="display: none;flex-direction: column;">
         <img id="gameGif" src="" style="display: flex; align-self: center;">
@@ -121,8 +126,14 @@ theme: minima
   background: radial-gradient(closest-side,#476374, #ffffff00);
   top: 32%;
   left: 43%;
+}
 
-}#missTxtMC{ 
+.cImg{
+  height: 100px;
+  cursor: pointer;
+}
+
+#missTxtMC{ 
   animation: fadeIn 1s; 
   position: absolute;
   font-family: 'Verdana', sans-serif;
