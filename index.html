@@ -75,8 +75,10 @@
             </div>
         </div>
       </div>
-      <div id="endScreen"style="display: none;">
-        <button onclick="back()">back to menu</button>
+      <div id="endScreen"style="display: none; flex-direction: column-reverse;">
+        <button onclick="back()">back to menu</button> <br>
+      <div id="out" style="font-size: -webkit-xxx-large;">---</div>
+        
       </div>
     </div>
   </div>
@@ -455,10 +457,10 @@ function hitEnemy(){
 }
 
 function endGame(msg,BG){
-  console.log(msg)
-  alert(msg)
-  gameScreen.style.display="none"
-  endScreen.style.display="flex"
+  console.log(msg);
+  document.getElementById("out").innerHTML=(msg);
+  gameScreen.style.display="none";
+  endScreen.style.display="flex";
 }
 function missMC(){
   document.getElementById("missTxtMC").style.display="block"
@@ -474,7 +476,6 @@ function missBAD(){
 }
 
 function hpBarUpdate(){
-  console.log("ewda")
   hpBarMC=document.getElementById("hpBarMC")
   hpBarBad=document.getElementById("hpBarBad")
   document.getElementById("hpBarMCred").style.width=document.getElementById("hpBarMC").style.width
@@ -518,7 +519,7 @@ function addNameData(first,last,mail){
     var date = new Date();
     var DateHandIn=date.getDate()+"/"+(date.getUTCMonth()+1)+"/"+date.getFullYear()
     var TimeHandIn=date.getHours()+":"+date.getMinutes()
-    fetch('https://sheetdb.io/api/v1/iwfjuy2l8ablu', {
+    fetch('https://sheetdb.io/api/v1/9ewmba27ywvls', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
