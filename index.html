@@ -383,10 +383,10 @@
     hpBarUpdate()
     if(ans==rightAns){
       hitEnemy()
-      studentAns.push(2)
+      studentAns.push(1)
     }else{
       missMC()
-      studentAns.push(1)
+      studentAns.push(2)
     }
     stopInput()
     setTimeout(function(){
@@ -512,8 +512,10 @@ function back(){
   StartScreen.style.display="flex"
   document.getElementById("hpBarBad").style.width=284
   document.getElementById("hpBarMC").style.width=284
-  questionOn=1
+  studentAns=[];
+  questionOn=1;
   hpBarUpdate()
+  updateQ()
 }
 function addNameData(first,last,mail){
     var date = new Date();
